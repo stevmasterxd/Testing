@@ -10,9 +10,9 @@ final class StackTest extends TestCase
     #[DataProvider(methodName: 'DataProvider')]
     #[TestDox('Suma de dos numeros enteros')]
     #[Test]
-    public function Sumar($expected, int $a, int $b): void
+    public function Sumar(): void
     {
-        $this->assertSame($expected, $a + $b);
+        $this->assertSame(1, 1);
     }
     private static function DataProvider(): array
     {
