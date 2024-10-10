@@ -15,16 +15,18 @@ class BankAccount
     {
         return $this->balance;
     }
-    public function withdraw(int $BankAccount): void
+    public function withdraw(float $BankAccount): void
     {
-        if ($this->balance > 0) {
+        if ($this->balance >= $BankAccount) {
             $this->balance = $this->getBalance() - $BankAccount;
         }
     }
-    private function deposit(): void
+    public function deposit(float $BankAccount): void
     {
 
-
+        if ($BankAccount > 0) {
+            $this->balance = $this->getBalance() + $BankAccount;
+        }
     }
     private function transfer(): void
     {
