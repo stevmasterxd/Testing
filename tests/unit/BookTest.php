@@ -19,5 +19,21 @@ final class BookTest extends TestCase
         $book->getUuid();
 
     }
+    /**
+     * @test
+     */
+    public function bookLoanTest(): void
+    {   $book= new Book ('El señor de los anillos', 'Tolkien');
+        $book->bookLoan();
+        $this->assertEquals(Book::AVAILABLE,$book->getState());
+
+    }
+    /**
+     * @test
+     */
+    public function returnBooktest(): void
+    {
+
+    }
 
 }
