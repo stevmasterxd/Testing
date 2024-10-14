@@ -22,18 +22,11 @@ final class BookTest extends TestCase
     /**
      * @test
      */
-    public function bookLoanTest(): void
+    public function bookChangedTest(): void
     {   $book= new Book ('El señor de los anillos', 'Tolkien');
-        $book->bookLoan();
         $this->assertEquals(Book::AVAILABLE,$book->getState());
+        $book->bookLoan();
+        $this->assertEquals(Book::BORROWED, $book->getState());
 
     }
-    /**
-     * @test
-     */
-    public function returnBooktest(): void
-    {
-
-    }
-
 }
