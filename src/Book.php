@@ -42,7 +42,7 @@ class Book
     {
         return $this->author;
     }
-    public function getUuide(): string
+    public function getUuid(): string
     {
         return $this->id;
     }

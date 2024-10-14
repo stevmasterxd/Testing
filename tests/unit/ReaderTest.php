@@ -9,7 +9,7 @@ final class BookTest extends TestCase
 {/**
  * @test
  */
-public function reederTest()
+public function reederTest(): void
 {
 
 }
