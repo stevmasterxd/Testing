@@ -28,9 +28,11 @@ class BankAccount
             $this->balance = $this->getBalance() + $BankAccount;
         }
     }
-    private function transfer(): void
+    public function transfer(float $amount, BankAccount $accountDestiny): void
     {
-
+        if ($amount > 0 && $this->balance >= $amount) {
+            $this->withdraw($amount);
+            $accountDestiny->deposit($amount);
+        }
     }
-
 }
