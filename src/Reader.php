@@ -8,7 +8,7 @@ class Reader
     private $name;
     private $id;
     private $bookList;
-    public function __construct(string $name)
+    public function __construct(string $name, string $id, array $bookList)
     {
         $this->name = $name;
         $this->id = Uuid::uuid4()->toString();

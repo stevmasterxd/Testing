@@ -13,18 +13,19 @@ final class BookTest extends TestCase
 
     public function informationBook(): void
     {
-        $book = new Book('El codigo Da vince', 'Dan Brown');
-        $book->informationOfBook();
-        $book->getState();
-        $book->getUuid();
+
+        $book = new Book('El codigo Da vince', 'Dan Brown', '', 'AVAILABLE');
+        $result = $book->informationOfBook();
+        $this->assertEquals($result, $book->informationOfBook());
 
     }
     /**
      * @test
      */
     public function bookChangedTest(): void
-    {   $book= new Book ('El señor de los anillos', 'Tolkien');
-        $this->assertEquals(Book::AVAILABLE,$book->getState());
+    {
+        $book = new Book('El señor de los anillos', 'Tolkien', '', '');
+        $this->assertEquals(Book::AVAILABLE, $book->getState());
         $book->bookLoan();
         $this->assertEquals(Book::BORROWED, $book->getState());
 

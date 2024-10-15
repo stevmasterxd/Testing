@@ -11,7 +11,7 @@ class Book
     private $state;
     const AVAILABLE = 'available';
     const BORROWED = 'borrowed';
-    public function __construct(string $title, string $author)
+    public function __construct(string $title, string $author, string $id, string $state)
     {
         $this->title = $title;
         $this->author = $author;
