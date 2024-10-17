@@ -15,7 +15,7 @@ class Book
         $this->title = $title;
         $this->author = $author;
         $this->id = $id;
-        $this->state = self::AVAILABLE;
+        $this->state = $state;
     }
     public function informationOfBook(): string
     {
@@ -49,4 +49,5 @@ class Book
     {
         return $this->state;
     }
+    
 }

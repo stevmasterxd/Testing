@@ -7,21 +7,26 @@ class Reader
 {
     private $nameReader;
     private $idReader;
-    private $ListOfBorrowedBooks;
-    public function __construct(string $nameReader, string $idReader, array $ListOfBorrowedBooks = [])
+    private $listOfBorrowedBooks;
+    public function __construct(string $nameReader, string $idReader, array $listOfBorrowedBooks)
     {
         $this->nameReader = $nameReader;
         $this->idReader = $idReader;
-        $this->ListOfBorrowedBooks = $ListOfBorrowedBooks;
+        $this->listOfBorrowedBooks = $listOfBorrowedBooks;
     }
 
-    public function bookLoan($book): array
-    {   $this->ListOfBorrowedBooks [] = $book;
-        return $this->ListOfBorrowedBooks;
-    }
-    public function returnBook(string $book, array $ListOfBorrowedBooks)
+    public function bookLoan($book): void
     {
-        
+        if ($book->getState() === Book::BORROWED) {
+            return;
+        }
+        $this->listOfBorrowedBooks[] = $book;
+        $book->bookLoan();
+    }
+
+    public function returnBook(string $book, array $listOfBorrowedBooks)
+    {
+
     }
     public function showBooks(): void
     {
@@ -35,5 +40,10 @@ class Reader
     {
         return $this->idReader;
     }
+    public function getListOfBorrowedBooks(): array
+    {
+        return $this->listOfBorrowedBooks;
+    }
+    
 
 }
