@@ -11,7 +11,7 @@ final class BookTest extends TestCase
      * @test
      */
 
-    public function creationBook(): void
+    public function creationBookTest(): void
     {
         $id = Uuid::uuid4()->toString();
         $book = new Book('El codigo Da vince', 'Dan Brown', $id, 'AVAILABLE');
@@ -25,7 +25,7 @@ final class BookTest extends TestCase
      * @test
      */
 
-    public function informationBook(): void
+    public function informationBookTest(): void
     {
         $id = Uuid::uuid4()->toString();
         $book = new Book('El codigo Da vince', 'Dan Brown', $id, 'AVAILABLE');

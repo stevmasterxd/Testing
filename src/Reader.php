@@ -6,20 +6,20 @@ use Ramsey\Uuid\Uuid;
 class Reader
 {
     private $nameReader;
-    private $id;
-    private $bookList;
-    public function __construct(string $nameReader, string $id, array $bookList)
+    private $idReader;
+    private $ListOfBorrowedBooks;
+    public function __construct(string $nameReader, string $idReader, array $ListOfBorrowedBooks = [])
     {
         $this->nameReader = $nameReader;
-        $this->id = Uuid::uuid4()->toString();
-        $this->bookList = [];
+        $this->idReader = $idReader;
+        $this->ListOfBorrowedBooks = $ListOfBorrowedBooks;
     }
 
     public function bookLoan($book): array
-    {
-        return $this->bookList[] = $book;
+    {   $this->ListOfBorrowedBooks [] = $book;
+        return $this->ListOfBorrowedBooks;
     }
-    public function returnBook(string $book, array $bookList): void
+    public function returnBook(string $book, array $ListOfBorrowedBooks)
     {
         
     }
@@ -33,7 +33,7 @@ class Reader
     }
     public function getUuid(): string
     {
-        return $this->id;
+        return $this->idReader;
     }
 
 }
