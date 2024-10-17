@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace Stev\Testing;
 //require 'vendor/autoload.php';
-use Ramsey\Uuid\Uuid;
 class Book
 {
     private $title;
@@ -15,7 +14,7 @@ class Book
     {
         $this->title = $title;
         $this->author = $author;
-        $this->id = Uuid::uuid4()->toString();
+        $this->id = $id;
         $this->state = self::AVAILABLE;
     }
     public function informationOfBook(): string
@@ -42,7 +41,7 @@ class Book
     {
         return $this->author;
     }
-    public function getUuid(): string
+    public function getId(): string
     {
         return $this->id;
     }

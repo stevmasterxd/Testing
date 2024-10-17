@@ -5,12 +5,12 @@ namespace Stev\Testing;
 use Ramsey\Uuid\Uuid;
 class Reader
 {
-    private $name;
+    private $nameReader;
     private $id;
     private $bookList;
-    public function __construct(string $name, string $id, array $bookList)
+    public function __construct(string $nameReader, string $id, array $bookList)
     {
-        $this->name = $name;
+        $this->nameReader = $nameReader;
         $this->id = Uuid::uuid4()->toString();
         $this->bookList = [];
     }
@@ -19,17 +19,17 @@ class Reader
     {
         return $this->bookList[] = $book;
     }
-    public function returnBook(): void
+    public function returnBook(string $book, array $bookList): void
     {
-
+        
     }
     public function showBooks(): void
     {
 
     }
-    public function getName(): string
+    public function getNameReader(): string
     {
-        return $this->name;
+        return $this->nameReader;
     }
     public function getUuid(): string
     {
