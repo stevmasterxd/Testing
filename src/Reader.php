@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 namespace Stev\Testing;
-use Ramsey\Uuid\Uuid;
 class Reader
 {
     private $nameReader;
