@@ -15,7 +15,7 @@ class Reader
         $this->listOfBorrowedBooks = $listOfBorrowedBooks;
     }
 
-    public function bookLoan($book): void
+    public function bookLoan(Book $book): void
     {
         if ($book->getState() === Book::BORROWED) {
             return;
@@ -24,13 +24,24 @@ class Reader
         $book->bookLoan();
     }
 
-    public function returnBook(string $book, array $listOfBorrowedBooks)
+    public function returnBook(Book $book): void
     {
-
+        foreach ($this->listOfBorrowedBooks as $key => $borrowedBook) {
+            if ($borrowedBook->getId() === $book->getId()) {
+                unset($this->listOfBorrowedsBooks[$key]);
+                $book->returnBook();
+                break;
+            }
+        }
     }
     public function showBooks(): void
     {
-
+        if (empty($this->listOfBorrowedBooks)) {
+            return;
+        }
+        foreach ($this->listOfBorrowedBooks as $book) {
+            $book->getTitle() . "\n";
+        }
     }
     public function getNameReader(): string
     {
@@ -44,6 +55,6 @@ class Reader
     {
         return $this->listOfBorrowedBooks;
     }
-    
+
 
 }
