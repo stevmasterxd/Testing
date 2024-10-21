@@ -33,14 +33,9 @@ class Reader
             }
         }
     }
-    public function showBooks(): void
+    public function showBooks(): array
     {
-        if (empty($this->listOfBorrowedBooks)) {
-            return;
-        }
-        foreach ($this->listOfBorrowedBooks as $book) {
-            $book->getTitle() . "\n";
-        }
+        return $this->listOfBorrowedBooks;
     }
     public function getNameReader(): string
     {
@@ -49,10 +44,6 @@ class Reader
     public function getUuid(): string
     {
         return $this->idReader;
-    }
-    public function getListOfBorrowedBooks(): array
-    {
-        return $this->listOfBorrowedBooks;
     }
 
 
