@@ -6,7 +6,7 @@ use Stev\Testing\Book;
 use Stev\Testing\Reader;
 use Ramsey\Uuid\Uuid;
 use PHPUnit\Framework\TestCase;
-final class Library extends TestCase
+final class LibraryTest extends TestCase
 {/**
  * @test
  */
