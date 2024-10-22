@@ -25,17 +25,23 @@ class Library
         $this->bookList[] = $book;
 
     }
-    public function borrowLibraryBook(Book $book): void
+    public function borrowLibraryBook(Book $book, Reader $reader): void
     {
         if ($book->getState() === Book::BORROWED) {
             return;
         }
         $book->bookLoan();
-        $this->bookList[] = $book;
+        $reader->bookLoan($book);
     }
-    public function returnBookToLibrary(): void
+    public function returnBookToLibrary(Book $book): void
     {
-
+        foreach ($this->bookList as $key => $borrowedBook) {
+            if ($borrowedBook->getId() === $book->getId()) {
+                unset($this->bookList[$key]);
+                $book->returnBook();
+                break;
+            }
+        }
     }
     public function getId(): string
     {
@@ -53,5 +59,7 @@ class Library
     {
         return $this->bookList;
     }
+    
+
 
 }
