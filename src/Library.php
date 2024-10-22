@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Stev\Testing;
 
+use SebastianBergmann\CodeUnit\FunctionUnit;
+
 class Library
 {
     private $id;
@@ -16,11 +18,19 @@ class Library
         $this->readerList = $readerList;
         $this->bookList = $bookList;
     }
-    public function borrowLibraryBook(Book $book)
+    public function addReaderToTheList(Reader $reader): void
     {
-        
+        $this->readerList[] = $reader;
     }
-    public function returnBookToLibrary()
+    public function addBookToTheList(Book $book): void
+    {
+        $this->bookList[] = $book;
+    }
+    public function borrowLibraryBook(): void
+    {
+
+    }
+    public function returnBookToLibrary(): void
     {
 
     }
