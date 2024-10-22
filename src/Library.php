@@ -23,10 +23,15 @@ class Library
     public function addBookToTheList(Book $book): void
     {
         $this->bookList[] = $book;
+
     }
     public function borrowLibraryBook(Book $book): void
     {
-
+        if ($book->getState() === Book::BORROWED) {
+            return;
+        }
+        $book->bookLoan();
+        $this->bookList[] = $book;
     }
     public function returnBookToLibrary(): void
     {
