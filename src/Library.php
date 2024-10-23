@@ -37,7 +37,7 @@ class Library
     {
         foreach ($this->bookList as $key => $borrowedBook) {
             if ($borrowedBook->getId() === $book->getId()) {
-                unset($this->bookList[$key]);
+                unset($this->listOfBorrowedsBooks[$key]);
                 $book->returnBook();
                 break;
             }
@@ -59,7 +59,4 @@ class Library
     {
         return $this->bookList;
     }
-    
-
-
 }
