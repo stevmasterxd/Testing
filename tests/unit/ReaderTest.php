@@ -30,8 +30,7 @@ final class ReaderTest extends TestCase
         $reader->bookLoan($book);
         $this->assertSame([$book], $reader->showBooks());
         $reader->returnBook($book);
-
-
+        $this->assertEquals([],$reader->showBooks());
     }
     /**
      * @test

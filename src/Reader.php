@@ -26,7 +26,7 @@ class Reader
     {
         foreach ($this->listOfBorrowedBooks as $key => $borrowedBook) {
             if ($borrowedBook->getId() === $book->getId()) {
-                unset($this->listOfBorrowedsBooks[$key]);
+                unset($this->listOfBorrowedBooks[$key]);
                 break;
             }
         }
