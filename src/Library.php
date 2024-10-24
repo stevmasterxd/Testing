@@ -30,14 +30,14 @@ class Library
         if ($book->getState() === Book::BORROWED) {
             return;
         }
-        $book->bookLoan();
         $reader->bookLoan($book);
+        $book->bookLoan();
     }
-    public function returnBookToLibrary(Book $book): void
+    public function returnBookToLibrary(Book $book, Reader $reader): void
     {
-        foreach ($this->bookList as $key => $borrowedBook) {
-            if ($borrowedBook->getId() === $book->getId()) {
-                unset($this->listOfBorrowedsBooks[$key]);
+        foreach ($this->bookList as $borrowedBook) {
+            if ($borrowedBook->getId() === $book->getId()) { //error
+                $reader->returnBook($book);
                 $book->returnBook();
                 break;
             }

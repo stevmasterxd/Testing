@@ -17,7 +17,6 @@ final class ReaderTest extends TestCase
         $book = new Book('El codigo Da vince', 'Dan Brown', $id2, Book::AVAILABLE);
         $reader->bookLoan($book);
         $this->assertSame([$book], $reader->showBooks());
-        $this->assertEquals('borrowed', $book->getState());
     }
     /**
      * @test
@@ -28,12 +27,10 @@ final class ReaderTest extends TestCase
         $reader = new Reader('Jose', $id, []);
         $id2 = Uuid::uuid4()->toString();
         $book = new Book('Don Quijote de la Mancha', 'Miguel De Cervantes', $id2, Book::AVAILABLE);
-        //$id3 = Uuid::uuid4()->toString();
-        //$book2 = new Book('Juego de Tronos', 'GORGE R R Martin', $id3, Book::BORROWED);
         $reader->bookLoan($book);
-        $this->assertEquals('borrowed', $book->getState());
+        $this->assertSame([$book], $reader->showBooks());
         $reader->returnBook($book);
-        $this->assertEquals('available', $book->getState());
+
 
     }
     /**

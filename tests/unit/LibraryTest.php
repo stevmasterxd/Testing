@@ -22,7 +22,7 @@ final class LibraryTest extends TestCase
         $library->addReaderToTheList($reader);
         $this->assertEquals([$reader], $library->getReaderList());
         $this->assertEquals([$book], $library->getBookList());
-        $reader->bookLoan($book);
+        $library->borrowLibraryBook($book, $reader);
         $this->assertEquals([$reader], $library->getReaderList());
         $this->assertEquals('borrowed', $book->getState());
     }
@@ -38,11 +38,9 @@ final class LibraryTest extends TestCase
         $id3 = Uuid::uuid4()->toString();
         $book = new Book('Star War', 'George Lucas', $id3, Book::AVAILABLE);
         $library->addBookToTheList($book);
-        $library->addReaderToTheList($reader);
-        $book->bookLoan();
-        $this->assertEquals([$book], $library->getBookList());
-        $library->returnBookToLibrary($book);
-        $this->assertEquals([$book], $library->getBookList());
+        $library->borrowLibraryBook($book, $reader);
+        $library->returnBookToLibrary($book,$reader);
+        $this->assertEquals([], $reader->showBooks());
         $this->assertEquals('available', $book->getState());
 
     }

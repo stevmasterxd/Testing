@@ -20,7 +20,6 @@ class Reader
             return;
         }
         $this->listOfBorrowedBooks[] = $book;
-        $book->bookLoan();
     }
 
     public function returnBook(Book $book): void
@@ -28,7 +27,6 @@ class Reader
         foreach ($this->listOfBorrowedBooks as $key => $borrowedBook) {
             if ($borrowedBook->getId() === $book->getId()) {
                 unset($this->listOfBorrowedsBooks[$key]);
-                $book->returnBook();
                 break;
             }
         }
@@ -45,6 +43,5 @@ class Reader
     {
         return $this->idReader;
     }
-
 
 }
